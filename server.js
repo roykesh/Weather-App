@@ -12,7 +12,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
     extended: false
 }))
-app.use('/', api)
 
 // Mongoose setup
 const mongoose = require('mongoose')
@@ -20,7 +19,10 @@ mongoose.connect('mongodb://localhost/weatherDB', {
     useNewUrlParser: true
 })
 
+
 const apiKey = "71b5b5cd59004ae089d33355182308"
+
+app.use('/', api)
 
 const port = 7070
 app.listen(port, function () {
