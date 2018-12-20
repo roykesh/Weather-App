@@ -23,8 +23,9 @@ router.get('/weather', (req, res) => {
 // GET by city name
 router.get('/city/:cityName', (req, res) => {
     request(`http://api.apixu.com/v1/current.json?key=${apiKey}&q=${req.params.cityName}`, (err, response) => {
-        console.log("API request working!")
+        console.log(`Getting ${req.params.cityName}'s info`)
         const parsedResponse = JSON.parse(response.body)
+        console.log(parsedResponse)
         res.send(parsedResponse)
     })
 })
@@ -38,17 +39,20 @@ router.get('/cities', function (req, res) {
 
 // POST save new City to DB   ///    TEMP C
 router.post('/city', function (req, res) {
+    console.log(req.body)
     let newCity = new City({
-        name: req.body.location.name,
-        updatedAt: req.body.current.last_updated,
-        temperature: req.body.temp_c,
-        condition: req.body.current.condition.text,
-        conditionPic: req.body.current.condition.icon
+        name: req.body.name,
+        updatedAt: req.body.updatedAt,
+        temperature: req.body.temperature,
+        condition: req.body.condition,
+        conditionPic: req.body.conditionPic
     })
+    console.log(newCity)
     newCity.save()
     res.end()
 })
 
+// Remove City from DB
 router.delete('/city/:cityName', (req, res) => {
     const cityName = req.params.cityName
     City.findOneAndDelete({

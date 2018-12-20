@@ -1,7 +1,6 @@
 // Server setup
 const express = require('express')
 const app = express()
-const request = require('request')
 const path = require('path')
 const bodyParser = require('body-parser')
 const api = require('./server/routes/api')
@@ -20,7 +19,7 @@ mongoose.connect('mongodb://localhost/weatherDB', {
 })
 
 
-const apiKey = "71b5b5cd59004ae089d33355182308"
+// const apiKey = "71b5b5cd59004ae089d33355182308"
 
 app.use('/', api)
 

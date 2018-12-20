@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+
+<body>
+
+    <input type="text" id="city-input" placeholder="City" />
+    <button id="weather-button">Weather</button>
+
+    <div id="city-container"></div>
+
+    <script id="city-template" type="text/x-handlebars-template">
+        {{#each allCityData}}
+        <div data-name="{{name}}" class="city">
+            <div class="city-name">{{name}}</div>
+            <div>{{temperature}}°</div>
+            <div>{{condition}}</div>
+            <div>{{updatedAt}}</div>
+            <img src="{{conditionPic}}">
+            <button class="save-city">Save</button>
+        </div>
+        {{/each}}
+    </script>
+
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="TempManager.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
