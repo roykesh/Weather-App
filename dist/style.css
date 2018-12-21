@@ -1,0 +1,129 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    color: #2C2A4A
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#wrapper {
+    min-width: 100vmin;
+    max-width: 100vmax;
+    margin: auto;
+    height: 100vh;
+}
+
+#top-bar {
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-areas: "i s";
+    grid-template-columns: 7fr 1fr;
+    border-bottom: solid 1px grey;
+}
+
+#city-input {
+    background-color: #A4C2A8;
+    color: #454955;
+    grid-area: i;
+    padding-left: 15px;
+    font-size: 120%;
+    outline: none;
+    border: none;
+}
+
+#weather-button {
+    grid-area: s;
+    background-color: #5CAB7D;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+#weather-button:active {
+    background-color: rgb(57, 134, 89);
+}
+
+.box {
+    display: grid;
+    grid-template-areas: "i t d";
+    grid-template-columns: 2fr 2fr 5fr 1fr 1fr;
+    border-bottom: solid gray 1px;
+    padding: 20px 0;
+}
+
+/* .saved {
+    background-color: #26758d;
+    color: #F5FBEF
+}
+
+.saved>.temp {
+    font-size: 140%;
+} */
+
+.image {
+    grid-area: i;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-template-columns: 1fr 2fr;
+    padding-left: 10px;
+}
+
+.temp {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    grid-area: t;
+    font-size: 150%
+}
+
+.data {
+    grid-area: d;
+    display: grid;
+    grid-template-areas: "n""c""u";
+    justify-content: center;
+    width: 100%;
+    padding: 5%;
+}
+
+.data span {
+    display: grid;
+    justify-content: center;
+}
+
+.city-name {
+    font-weight: bold;
+    grid-area: n;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 75% 25%;
+}
+
+.city-name>span {
+    padding-left: 10%;
+}
+
+.condition {
+    grid-area: c;
+    font-size: 90%;
+}
+
+.updatedAt {
+    margin-top: 2px;
+    grid-area: u;
+    font-size: 60%;
+    color: #A4C2A8
+}
+
+.save {
+    margin-left: auto;
+}
+
+.remove {
+    margin-top: auto;
+    margin-left: 15px
+}

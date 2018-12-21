@@ -47,7 +47,6 @@ router.post('/city', function (req, res) {
         condition: req.body.condition,
         conditionPic: req.body.conditionPic
     })
-    console.log(newCity)
     newCity.save()
     res.end()
 })

@@ -7,7 +7,8 @@ class TempManager {
     async getDataFromDB() {
         let data = await $.get('/cities')
         data ? this.cityData = data : null
-        console.log(data)
+        this.renderer.renderData(this.cityData)
+
     }
 
     async getCityData(cityName) {
@@ -17,22 +18,32 @@ class TempManager {
             updatedAt: data.current.last_updated,
             temperature: data.current.temp_c,
             condition: data.current.condition.text,
-            conditionPic: data.current.condition.icon
+            conditionPic: data.current.condition.icon,
         })
-        console.log(this.cityData)
     }
 
     saveCity(cityName) {
-        console.log(cityName)
         let cityToSave = this.cityData.find(c => c.name === cityName)
         $.post(`/city`, cityToSave, function () {})
     }
 
-    removeCity(cityName) {
-        $.ajax({
+    async removeCity(cityName) {
+        const unsavedCity = await $.ajax({
             url: `/city/${cityName}`,
-            method: "DELETE",
-            success: function () {}
+            method: "delete",
+            success: function (res) {
+                return res
+            }
         })
+        this.cityData = this.cityData.filter(c => c.name !== unsavedCity.name)
+        this.cityData.push(unsavedCity)
     }
+    // async removeCity(cityName) {
+    //     await $.ajax({
+    //         url: `/city/${cityName}`,
+    //         method: "DELETE",
+    //         success: function () {}
+    //     })
+    //     this.renderer.renderData(this.cityData)
+    // }
 }

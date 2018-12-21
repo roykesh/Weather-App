@@ -16,17 +16,25 @@ $('#weather-button').on('click', function () {
     handleSearch(cityInput)
 })
 
-$('body').on('click', '.save-city', function () {
+$('body').on('click', '.save', function () {
     let cityName = $(this).closest('.city').data()
-    console.log(cityName)
     tempMan.saveCity(cityName.name)
     renderer.renderData(tempMan.cityData)
+    console.log(`saving ${cityName.name}`)
 })
 
-$('body').on('click', '#remove-city', function () {
+$('body').on('click', '.remove', function () {
     let cityName = $(this).closest('.city').data()
     tempMan.removeCity(cityName.name)
-    renderer.renderData(allCityData)
+    console.log(`removing ${cityName.name}`)
 })
+
+// Enter to search
+$("#city-input").keypress(function (e) {
+    const key = e.which;
+    if (key == 13) {
+        $("#weather-button").trigger("click")
+    }
+});
 
 loadPage()
