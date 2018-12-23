@@ -1,13 +1,11 @@
 class TempManager {
-    constructor(renderer) {
-        this.renderer = renderer,
-            this.cityData = []
+    constructor() {
+        this.cityData = []
     }
 
     async getDataFromDB() {
         let data = await $.get('/cities')
-        data ? this.cityData = data : null
-        this.renderer.renderData(this.cityData)
+        this.cityData = data
 
     }
 

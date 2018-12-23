@@ -1,5 +1,5 @@
 const renderer = new Renderer()
-const tempMan = new TempManager(renderer)
+const tempMan = new TempManager()
 
 const loadPage = async () => {
     await tempMan.getDataFromDB()
